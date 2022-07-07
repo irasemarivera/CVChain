@@ -7,6 +7,7 @@ import { Form, FormLabel, FormGroup, FormControl, Button} from 'react-bootstrap'
 
 import NavigationAdmin from './NavigationAdmin';
 import Footer from './Footer';
+import Error from './Error';
 
 class Configuration extends Component {
     constructor(props) {
@@ -159,7 +160,7 @@ class Configuration extends Component {
           </div>
         );
       } else {
-        return (<div><h1>Usuario no autorizado{this.state.role}</h1></div>);
+        return (<Error/>);
       }
     }
 }

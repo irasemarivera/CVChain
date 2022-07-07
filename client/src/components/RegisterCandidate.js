@@ -6,6 +6,7 @@ import { Form, FormLabel, FormGroup, FormControl, Button } from 'react-bootstrap
 
 import NavigationUnregisteredCandidate from './NavigationUnregisteredCandidate';
 import Footer from './Footer';
+import Error from './Error';
 
 class RegisterCandidate extends Component {
     constructor(props){
@@ -211,7 +212,7 @@ class RegisterCandidate extends Component {
           </div>
         );
       } else {
-        return (<div><h1>Usuario no autorizado</h1></div>);
+        return (<Error/>);
       }
     }
 }

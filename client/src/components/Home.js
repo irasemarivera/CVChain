@@ -141,6 +141,10 @@ class Home extends Component {
           <div className="jumbotron">
             <h2>¡Bienvenid@ Administrador!</h2>
           </div>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
           <Numbers state = {this.state} />
           <Footer/>
         </div>

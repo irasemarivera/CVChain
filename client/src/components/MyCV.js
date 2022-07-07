@@ -7,7 +7,9 @@ import getWeb3 from "../getWeb3";
 
 import NavigationRegisteredCandidate from './NavigationRegisteredCandidate';
 import HomeRegisteredCandidate from './HomeRegisteredCandidate';
+import Experiences from './Experiences';
 import Footer from './Footer';
+import Error from './Error';
 
 class MyCV extends Component {
   constructor(props) {
@@ -125,38 +127,7 @@ class MyCV extends Component {
     document.getElementById("showModal").click();
   }
 
-  render() {
-    let academicExperiencesCount = 0;
-    let academicExperienceList;
-    if(this.state.academicExperienceList){
-      academicExperienceList = this.state.academicExperienceList.map((academicExperience, key) => {
-        return (
-          <tr key={key}>
-            <td>{++academicExperiencesCount}</td>
-            <td><a href={`https://ipfs.infura.io/ipfs/${academicExperience.hash}`}>{academicExperience.title}</a></td>
-            <td>{academicExperience.isVerified ? <span className="label label-success">Verificado</span> : <span className="label label-default">Pendiente</span>}</td>
-            <td>{academicExperience.verifier}</td>
-            <td>{academicExperience.isVerified ? new Date(academicExperience.verificationDate*1000).toLocaleString()  : "-"}</td>
-          </tr>
-        );
-      });
-    }
-    let professionalExperiencesCount = 0;
-    let professionalExperienceList;
-    if(this.state.professionalExperienceList){
-      professionalExperienceList = this.state.professionalExperienceList.map((professionalExperience, key) => {
-        return (
-          <tr key={key}>
-            <td>{++professionalExperiencesCount}</td>
-            <td><a href={`https://ipfs.infura.io/ipfs/${professionalExperience.hash}`}>{professionalExperience.title}</a></td>
-            <td>{professionalExperience.isVerified ? <span className="label label-success">Verificado</span> : <span className="label label-default">Pendiente</span>}</td>
-            <td>{professionalExperience.verifier}</td>
-            <td>{professionalExperience.isVerified ? new Date(professionalExperience.verificationDate*1000).toLocaleString() : "-"}</td>
-          </tr>
-        );
-      });
-    }
-    
+  render() {  
     if (!this.state.web3) {
       return (
         <div className = "container-fluid">
@@ -165,16 +136,16 @@ class MyCV extends Component {
           </div>
         </div>
       );
-    } else {
+    } else if (this.state.candidate){
       let optionsList;
-        if(this.state.recruitersList){
-          optionsList = this.state.recruitersList.map((recruiter, key) => {
-            return (
-              <option key={key} value={recruiter.recruiterAddress}>[{recruiter.cif}] {recruiter.name}</option>
-            );
-          });
-        }
-        let url = window.origin 
+      if(this.state.recruitersList){
+        optionsList = this.state.recruitersList.map((recruiter, key) => {
+          return (
+            <option key={key} value={recruiter.recruiterAddress}>[{recruiter.cif}] {recruiter.name}</option>
+          );
+        });
+      }
+      let url = window.origin 
       return (
         <div className = "container-fluid">  
           <NavigationRegisteredCandidate state = {this.state}/>
@@ -203,61 +174,10 @@ class MyCV extends Component {
                 </div>
               </FormGroup>
               </Form>
-              </div>
-            <div className="row">
-              <HomeRegisteredCandidate state = {this.state}/>
-              <div className="col-sm-10"><h3>Experiencias Académicas</h3></div>
-            </div>
-            <div className="row">
-              <div className="col-sm-10">
-                Total de experiencias académicas: {this.state.academicExperienceCount}
-              </div>
-            </div>
-            <div className="row">
-              <div className="table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Título</th>
-                      <th>Status</th>
-                      <th>Verificable por</th>
-                      <th>Fecha de verificación</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {academicExperienceList}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-sm-10"><h3>Experiencias Profesionales</h3></div>
-            </div>
-            <div className="row">
-              <div className="col-sm-10">
-                Total de experiencias profesionales: {this.state.professionalExperienceCount}
-              </div>
-            </div>
-            <div className="row">
-              <div className="table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Título</th>
-                      <th>Status</th>
-                      <th>Verificable por</th>
-                      <th>Fecha de verificación</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {professionalExperienceList}
-                  </tbody>
-                </table>
-              </div>
             </div>
           </div>
+          <HomeRegisteredCandidate state = {this.state}/>
+          <Experiences state = {this.state}/>
           <div className="container">
             <div className="modal fade" id="myModal" role="dialog">
               <div className="modal-dialog">
@@ -281,6 +201,8 @@ class MyCV extends Component {
           <Footer/>
         </div>
       );
+    } else {
+      return (<Error/>);
     }
   }
 }

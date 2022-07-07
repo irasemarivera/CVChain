@@ -117,13 +117,14 @@ class ExperiencesToVerify extends Component {
   }
 
   render() {
+    let unverifiedExperiencesCount = 0;
     let unverifiedExperiencesList;
     if(this.state.unverifiedExperiences){
       unverifiedExperiencesList = this.state.unverifiedExperiences.map((unverifiedExperience, key) => {
         return (
           <tr key={key}>
-            <td>{unverifiedExperience.id}</td>
-            <td><a href={`https://ipfs.infura.io/ipfs/${unverifiedExperience.hash}`}>{unverifiedExperience.title}</a></td>
+            <td>{++unverifiedExperiencesCount}</td>
+            <td><a href={`https://ipfs.infura.io/ipfs/${unverifiedExperience.hash}`} target="_blank">{unverifiedExperience.title}</a></td>
             <td><input id={unverifiedExperience.id} name={"check_"+unverifiedExperience.id} type="checkbox"/></td>
           </tr>
         );

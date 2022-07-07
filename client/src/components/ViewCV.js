@@ -7,7 +7,9 @@ import getWeb3 from "../getWeb3";
 
 import NavigationRecruiter from './NavigationRecruiter';
 import HomeRegisteredCandidate from './HomeRegisteredCandidate';
+import Experiences from './Experiences';
 import Footer from './Footer';
+import Error from './Error';
 
 class ViewCV extends Component {
   constructor(props) {
@@ -228,7 +230,7 @@ class ViewCV extends Component {
         </div> 
       );
     }
-    if (this.state.candidateAddress){
+    if (this.state.candidateAddress && this.state.candidate){
       return (
         <div className = "container-fluid">  
           <NavigationRecruiter state = {this.state}/>
@@ -247,63 +249,14 @@ class ViewCV extends Component {
                       </div>
                   </div>
               </div>
-            <div className="row">
-              <HomeRegisteredCandidate state = {this.state}/>
-              <div className="col-sm-10"><h3>Experiencias Académicas</h3></div>
-            </div>
-            <div className="row">
-              <div className="col-sm-10">
-                Total de experiencias académicas: {this.state.academicExperienceCount}
-              </div>
-            </div>
-            <div className="row">
-              <div className="table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Título</th>
-                      <th>Status</th>
-                      <th>Verificable por</th>
-                      <th>Fecha de verificación</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {academicExperienceList}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-sm-10"><h3>Experiencias Profesionales</h3></div>
-            </div>
-            <div className="row">
-              <div className="col-sm-10">
-                Total de experiencias profesionales: {this.state.professionalExperienceCount}
-              </div>
-            </div>
-            <div className="row">
-              <div className="table-responsive">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Título</th>
-                      <th>Status</th>
-                      <th>Verificable por</th>
-                      <th>Fecha de verificación</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {professionalExperienceList}
-                  </tbody>
-                </table>
-              </div>
-            </div>
           </div>
+          <HomeRegisteredCandidate state = {this.state}/>
+          <Experiences state = {this.state}/>
           {modal}
         </div>
       );
+    } else {
+      return (<Error/>);
     }
   }
 }

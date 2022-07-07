@@ -7,6 +7,7 @@ import { Form, FormLabel, FormGroup, FormControl, Button, } from 'react-bootstra
 
 import NavigationAdmin from './NavigationAdmin';
 import Footer from './Footer';
+import Error from './Error';
 
 class AddVerifier extends Component {
     constructor(props) {
@@ -203,7 +204,7 @@ class AddVerifier extends Component {
           </div>
         );
       } else {
-        return (<div><h1>Usuario no autorizado{this.state.role}</h1></div>);
+        return (<Error/>);
       }
     }
 }
