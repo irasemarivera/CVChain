@@ -9,7 +9,7 @@ const etherscanKey = process.env.ETHERSCAN_API_KEY;
 module.exports = {
    // See <http://truffleframework.com/docs/advanced/configuration>
    // to customize your Truffle configuration!
-   contracts_build_directory: path.join(__dirname, "client/src/contracts"),
+   contracts_build_directory: path.join(__dirname, "client/src/abi"),
    networks: {
       development: {
          network_id: "*",
@@ -27,7 +27,7 @@ module.exports = {
    },
    compilers: {
       solc: {
-         version: "0.4.25",
+         version: "0.8.7",
          optimizer: {
             enabled: true,
             runs: 200

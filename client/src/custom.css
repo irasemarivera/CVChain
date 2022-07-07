@@ -6,3 +6,15 @@ body {
 .nav-padding-right {
   padding-right: 20px;
 }
+
+.bg-grey {
+  background-color: #f6f6f6;
+}
+
+.numbers { 
+  padding-bottom: 350px;
+}
+
+.invisible {
+  display:none;
+}
