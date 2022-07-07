@@ -2,10 +2,8 @@ require('dotenv').config();
 
 const path = require("path");
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-//const mnemonic = process.env.MNEMONIC_GOERLI;
-const mnemonic ="grant beauty assume purchase language gun shrug noble foam manual fall belt";
-//const infuraAccessKey = process.env.INFURA_ACCESS_KEY;
-const infuraAccessKey = "450575ad0a874557b5acffcab12f4589";
+const mnemonic = process.env.MNEMONIC_GOERLI;
+const infuraAccessKey = process.env.INFURA_ACCESS_KEY;
 const etherscanKey = process.env.ETHERSCAN_API_KEY;
 
 module.exports = {
