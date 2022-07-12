@@ -98,7 +98,7 @@ class Recruiters extends Component {
             <td>{recruiter.name}</td>
             <td>{recruiter.postalAddress}</td>
             <td>{recruiter.emailAddress}</td>
-            <td>{recruiter.verifierAddress}</td>
+            <td>{recruiter.recruiterAddress}</td>
           </tr>
         );
       });
