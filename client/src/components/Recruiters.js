@@ -106,7 +106,7 @@ class Recruiters extends Component {
     return (
       <div className = "container-fluid">  
         <NavigationAdmin state={this.state}/>
-        <div className = "container-fluid"> 
+        <div className = "container"> 
           <div className="row">
             <div className="col-sm-10"><h3>Reclutadores</h3></div>
             <div className="col-sm-2"><Link to = {{pathname: "/AddRecruiter", state: this.state}}><Button type = "button">Nuevo reclutador</Button></Link></div>
