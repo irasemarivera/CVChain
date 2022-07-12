@@ -112,7 +112,7 @@ class AddRecruiter extends Component {
         return (
           <div className = "container-fluid">
             <NavigationAdmin state={this.state}/>
-            <div className = "container-fluid"> 
+            <div className = "container"> 
               <div className="row">
                 <div className="col-*-*"><h3>Ingresa los datos del reclutador</h3></div>
               </div>
